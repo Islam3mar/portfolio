@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Islam Omar — Back-End Developer</title>
+<title>Islam Omar — Back-End Developer (.NET)</title>
+<meta name="description" content="Islam Omar — .NET back-end developer and intern at Pioneers Solutions. RESTful APIs and MVC apps built on Clean and Onion Architecture with ASP.NET Core, EF Core, JWT, Redis, SignalR, and Stripe.">
+<meta name="theme-color" content="#0B1220">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Islam Omar — Back-End Developer (.NET)">
+<meta property="og:description" content="ASP.NET Core APIs and MVC apps on Clean and Onion Architecture. Back-end intern at Pioneers Solutions. Four projects with live demos.">
+<meta property="og:url" content="https://islam3mar.github.io/portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%237DD3C0' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23F0A860'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,20 +31,28 @@
     --maxw:1120px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
   body{
     margin:0;
     background:var(--bg);
     color:var(--text);
-    font-family:'Inter',sans-serif;
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
   ::selection{background:var(--core);color:#06231D;}
   a{color:inherit;text-decoration:none;}
-  .mono{font-family:'JetBrains Mono',monospace;}
+  .mono{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
   img{max-width:100%;display:block;}
+  :focus-visible{outline:2px solid var(--edge);outline-offset:3px;border-radius:4px;}
+
+  .skip-link{
+    position:absolute;left:-999px;top:8px;z-index:100;
+    background:var(--core);color:#06231D;padding:8px 14px;border-radius:8px;
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;font-weight:600;
+  }
+  .skip-link:focus{left:12px;}
 
   /* background grid texture */
   .bg-grid{
@@ -54,6 +69,7 @@
   header.nav{
     position:sticky;top:0;z-index:40;
     background:rgba(11,18,32,0.82);
+    -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -66,7 +82,7 @@
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--core);box-shadow:0 0 0 3px rgba(125,211,192,0.18);}
   nav.links{display:flex;gap:2px;flex-wrap:wrap;}
   nav.links a{
-    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--muted);
     padding:8px 12px;border-radius:8px;transition:color .15s ease, background .15s ease;
     white-space:nowrap;
   }
@@ -76,7 +92,7 @@
   .hero{position:relative;z-index:1;padding:88px 0 64px;}
   .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
   .eyebrow{
-    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--core);
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--core);
     letter-spacing:0.06em;display:flex;align-items:center;gap:10px;margin-bottom:18px;
   }
   .eyebrow::before{content:'';width:18px;height:1px;background:var(--core);display:inline-block;}
@@ -90,7 +106,7 @@
   .lede b{color:var(--text);font-weight:600;}
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px;}
   .btn{
-    font-family:'JetBrains Mono',monospace;font-size:13px;
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:13px;
     padding:13px 20px;border-radius:10px;border:1px solid var(--line-strong);
     display:inline-flex;align-items:center;gap:10px;transition:all .15s ease;
   }
@@ -98,21 +114,21 @@
   .btn.primary:hover{background:#93E0CF;transform:translateY(-1px);}
   .btn.ghost{color:var(--text);}
   .btn.ghost:hover{border-color:var(--edge);color:var(--edge);}
-  .contact-chips{display:flex;flex-wrap:wrap;gap:10px 18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);}
+  .contact-chips{display:flex;flex-wrap:wrap;gap:10px 18px;font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--muted);}
   .contact-chips a:hover{color:var(--core);}
   .contact-chips span.sep{opacity:.35;}
 
   /* signature: layered rings */
   .rings-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
   .rings-wrap svg{width:100%;max-width:400px;height:auto;}
-  .ring-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;}
+  .ring-label{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:10.5px;}
 
   /* ---------- SECTION SHELL ---------- */
   section{position:relative;z-index:1;padding:76px 0;border-top:1px solid var(--line);}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:36px;flex-wrap:wrap;}
-  .section-tag{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--edge);letter-spacing:0.05em;}
+  .section-tag{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--edge);letter-spacing:0.05em;}
   h2.h{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(24px,3vw,32px);margin:6px 0 0;}
-  .section-note{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+  .section-note{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted);}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
@@ -124,15 +140,15 @@
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px;}
   .stat .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--core);}
-  .stat .lbl{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:4px;}
+  .stat .lbl{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);margin-top:4px;}
 
   /* ---------- SKILLS ---------- */
   .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .skill-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
-  .skill-card .k{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--edge);letter-spacing:0.04em;margin-bottom:12px;}
+  .skill-card .k{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--edge);letter-spacing:0.04em;margin-bottom:12px;}
   .pill-row{display:flex;flex-wrap:wrap;gap:7px;}
   .pill{
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--text);
     background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px;
   }
   .learning-strip{
@@ -145,7 +161,7 @@
   @keyframes pulse{0%{transform:scale(0.6);opacity:.6;}100%{transform:scale(2.1);opacity:0;}}
   .learning-strip .txt{font-size:14px;color:var(--text);}
   .learning-strip .txt b{color:var(--edge);}
-  .learning-strip .badge{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--edge);border:1px solid var(--edge-dim);border-radius:20px;padding:4px 10px;}
+  .learning-strip .badge{margin-left:auto;font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--edge);border:1px solid var(--edge-dim);border-radius:20px;padding:4px 10px;}
 
   /* ---------- PROJECTS ---------- */
   .project{
@@ -154,26 +170,41 @@
   }
   .project:hover{border-color:var(--core-dim);transform:translateY(-2px);}
   .project-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px;}
-  .route{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--core);}
+  .route{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12px;color:var(--core);}
   .route .method{color:var(--edge);margin-right:8px;}
   .project h3{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:600;margin:6px 0 12px;}
   .stack-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
   .project ul{margin:0 0 16px;padding-left:20px;color:var(--muted);font-size:14.5px;}
   .project ul li{margin-bottom:6px;}
   .project ul li::marker{color:var(--core-dim);}
-  .repo-link{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;border-top:1px solid var(--line);padding-top:14px;width:100%;}
-  .repo-link:hover{color:var(--core);}
-  .grade{font-family:'JetBrains Mono',monospace;font-size:11px;color:#06231D;background:var(--core);border-radius:6px;padding:3px 8px;font-weight:600;}
+  .project-note{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);margin:-4px 0 16px;}
+  .project-links{
+    display:flex;flex-wrap:wrap;gap:10px 26px;border-top:1px solid var(--line);padding-top:14px;
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;
+  }
+  .project-links a{color:var(--muted);display:inline-flex;align-items:center;gap:6px;}
+  .project-links a:hover{color:var(--core);}
+  .project-links a.live{color:var(--core);font-weight:500;}
+  .project-links a.live:hover{color:#93E0CF;}
+  .grade{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11px;color:#06231D;background:var(--core);border-radius:6px;padding:3px 8px;font-weight:600;}
+  .grade.edge{background:var(--edge);}
 
-  /* ---------- EDUCATION / TIMELINE ---------- */
+  /* ---------- EXPERIENCE / EDUCATION TIMELINE ---------- */
   .timeline{border-left:1px solid var(--line-strong);margin-left:6px;}
   .t-item{position:relative;padding:0 0 34px 28px;}
   .t-item:last-child{padding-bottom:0;}
   .t-item::before{content:'';position:absolute;left:-5.5px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--core);}
-  .t-when{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);margin-bottom:4px;}
+  .t-item.current::before{background:var(--core);box-shadow:0 0 0 4px rgba(125,211,192,0.18);}
+  .t-when{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);margin-bottom:4px;}
   .t-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:4px;}
-  .t-title .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--edge);border:1px solid var(--edge-dim);border-radius:20px;padding:2px 9px;margin-left:10px;vertical-align:middle;}
+  .t-title .tag{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--edge);border:1px solid var(--edge-dim);border-radius:20px;padding:2px 9px;margin-left:10px;vertical-align:middle;}
   .t-desc{color:var(--muted);font-size:14.5px;max-width:65ch;}
+  .t-place{color:var(--muted);font-size:13.5px;margin-bottom:8px;}
+  .t-list{margin:8px 0 12px;padding-left:18px;color:var(--muted);font-size:14.5px;max-width:65ch;}
+  .t-list li{margin-bottom:6px;}
+  .t-list li::marker{color:var(--core-dim);}
+  .t-link{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--core);}
+  .t-link:hover{color:#93E0CF;}
 
   /* ---------- CONTACT / FOOTER ---------- */
   .contact-panel{
@@ -184,12 +215,12 @@
   .contact-panel p{color:var(--muted);max-width:52ch;margin:0 auto 28px;}
   .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:26px;}
   .contact-links a{
-    font-family:'JetBrains Mono',monospace;font-size:13px;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:13px;border:1px solid var(--line-strong);
     border-radius:10px;padding:11px 18px;transition:all .15s ease;
   }
   .contact-links a:hover{border-color:var(--core);color:var(--core);}
   .download-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
-  footer{padding:26px 0 40px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);}
+  footer{padding:26px 0 40px;text-align:center;font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:900px){
@@ -197,7 +228,8 @@
     .rings-wrap{order:-1;max-width:280px;margin:0 auto 8px;}
     .about-grid{grid-template-columns:1fr;}
     .skills-grid{grid-template-columns:repeat(2,1fr);}
-    nav.links{display:none;}
+    nav.links{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;}
+    nav.links::-webkit-scrollbar{display:none;}
   }
   @media (max-width:640px){
     .wrap{padding:0 18px;}
@@ -206,7 +238,10 @@
     .skills-grid{grid-template-columns:1fr;}
     .stat-grid{grid-template-columns:1fr 1fr;}
     .contact-panel{padding:30px 22px;}
-    .nav-inner{padding:14px 18px;}
+    .nav-inner{padding:12px 18px;flex-direction:column;align-items:flex-start;gap:6px;}
+    nav.links{width:100%;}
+    nav.links a{padding:6px 10px;}
+    html{scroll-padding-top:110px;}
     .learning-strip .badge{margin-left:0;}
   }
   @media (prefers-reduced-motion: reduce){
@@ -216,24 +251,32 @@
     #ring-svg *{animation:none !important;}
   }
 </style>
+<noscript>
+  <style>
+    .reveal{opacity:1;transform:none;}
+    #ring-svg .ring{stroke-dashoffset:0 !important;}
+  </style>
+</noscript>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="bg-grid"></div>
 
 <header class="nav">
   <div class="nav-inner">
     <div class="brand"><span class="dot"></span>Islam Omar</div>
-    <nav class="links">
+    <nav class="links" aria-label="Sections">
       <a href="#about">/about</a>
       <a href="#skills">/skills</a>
+      <a href="#experience">/experience</a>
       <a href="#projects">/projects</a>
-      <a href="#learning">/learning</a>
+      <a href="#education">/education</a>
       <a href="#contact">/contact</a>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
   <!-- HERO -->
   <section class="hero" style="border-top:none;padding-top:88px;">
@@ -241,7 +284,7 @@
       <div>
         <div class="eyebrow">back-end developer · .net / c#</div>
         <h1 class="title">Building APIs that hold<br>their <span class="accent">architecture</span> together.</h1>
-        <p class="lede">I'm <b>Islam Omar</b>, a fresh .NET back-end developer from Egypt. I build RESTful APIs on Clean and Onion Architecture — with JWT auth, caching, payments, and real-time features layered in the right place, not bolted on.</p>
+        <p class="lede">I'm <b>Islam Omar</b>, a .NET back-end developer from Egypt, currently interning at <b>Pioneers Solutions</b>. I build RESTful APIs and MVC apps on Clean and Onion Architecture — with JWT auth, caching, payments, and real-time features layered in the right place, not bolted on.</p>
         <div class="cta-row">
           <a class="btn primary" href="Islam_Omar_CV.pdf" download>↓ Download CV — PDF</a>
           <a class="btn ghost" href="Islam_Omar_CV.docx" download>↓ Download CV — Word</a>
@@ -255,7 +298,7 @@
           <span class="sep">/</span>
           <a href="https://github.com/Islam3mar" target="_blank" rel="noopener">GitHub</a>
           <span class="sep">/</span>
-          <span>Sadat City, Egypt</span>
+          <span>Cairo, Egypt</span>
         </div>
       </div>
 
@@ -284,14 +327,14 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I graduated from <b>Menofia University</b> (Physics &amp; Computer Science) and completed a 120-hour back-end diploma at <b>Route Academy</b>, where I built three full projects from the ground up instead of just following tutorials. I care about where logic lives in a codebase — that's why Clean and Onion Architecture, the Repository pattern, and SOLID show up in everything I build.</p>
-        <p>I'm currently pushing into the front end too, working through an <b>Angular</b> course so I can reason about the full request path — from a component's click handler down to the database — not just the API half of it.</p>
+        <p>I'm a <b>.NET back-end developer</b> who graduated from <b>Menofia University</b> (Physics &amp; Computer Science) and completed a 120-hour back-end diploma at <b>Route Academy</b>. I build complete projects end to end instead of following tutorials, and I care about where logic lives in a codebase — that's why Clean and Onion Architecture, the Repository pattern, and SOLID show up in everything I write.</p>
+        <p>In <b>September 2026</b> I joined <b>Pioneers Solutions</b> as a Back-End Developer Intern, working on ASP.NET Core MVC in a live production environment. I'm also learning <b>Angular</b>, so I can follow a request all the way from a click in the browser down to the database.</p>
       </div>
       <div class="stat-grid reveal">
         <div class="stat"><div class="num">84%</div><div class="lbl">university gpa</div></div>
         <div class="stat"><div class="num">120h</div><div class="lbl">back-end diploma</div></div>
         <div class="stat"><div class="num">A+</div><div class="lbl">graduation project</div></div>
-        <div class="stat"><div class="num">03</div><div class="lbl">shipped projects</div></div>
+        <div class="stat"><div class="num">04</div><div class="lbl">projects with live demos</div></div>
       </div>
     </div>
   </section>
@@ -305,27 +348,39 @@
     <div class="skills-grid reveal">
       <div class="skill-card">
         <div class="k">languages</div>
-        <div class="pill-row"><span class="pill">C#</span><span class="pill">SQL</span><span class="pill">JavaScript</span><span class="pill">CSS</span></div>
+        <div class="pill-row"><span class="pill">C#</span><span class="pill">SQL</span><span class="pill">T-SQL</span></div>
       </div>
       <div class="skill-card">
         <div class="k">frameworks &amp; libraries</div>
-        <div class="pill-row"><span class="pill">ASP.NET Core</span><span class="pill">Web API</span><span class="pill">EF Core</span><span class="pill">AutoMapper</span><span class="pill">FluentValidation</span></div>
+        <div class="pill-row"><span class="pill">ASP.NET Core</span><span class="pill">ASP.NET MVC</span><span class="pill">Web API</span><span class="pill">EF Core</span><span class="pill">LINQ</span><span class="pill">AutoMapper</span><span class="pill">FluentValidation</span></div>
       </div>
       <div class="skill-card">
         <div class="k">architecture &amp; patterns</div>
-        <div class="pill-row"><span class="pill">Clean Architecture</span><span class="pill">Onion Architecture</span><span class="pill">Repository</span><span class="pill">Unit of Work</span><span class="pill">SOLID</span></div>
+        <div class="pill-row"><span class="pill">Clean Architecture</span><span class="pill">Onion Architecture</span><span class="pill">3-Tier</span><span class="pill">Repository</span><span class="pill">Unit of Work</span><span class="pill">Specification</span><span class="pill">SOLID</span></div>
       </div>
       <div class="skill-card">
         <div class="k">auth &amp; security</div>
-        <div class="pill-row"><span class="pill">JWT</span><span class="pill">ASP.NET Identity</span><span class="pill">Role-based Auth</span></div>
+        <div class="pill-row"><span class="pill">JWT</span><span class="pill">ASP.NET Identity</span><span class="pill">Role-based Auth</span><span class="pill">Permission-based Auth</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="k">data</div>
+        <div class="pill-row"><span class="pill">SQL Server</span><span class="pill">EF Core Migrations</span><span class="pill">Fluent API</span><span class="pill">Redis</span></div>
       </div>
       <div class="skill-card">
         <div class="k">infra &amp; integrations</div>
-        <div class="pill-row"><span class="pill">Redis</span><span class="pill">SignalR</span><span class="pill">Stripe</span><span class="pill">Swagger</span></div>
+        <div class="pill-row"><span class="pill">SignalR</span><span class="pill">Stripe</span><span class="pill">Background Jobs</span><span class="pill">Excel Import / Export</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="k">front end</div>
+        <div class="pill-row"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Bootstrap</span><span class="pill">Angular (learning)</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="k">testing &amp; docs</div>
+        <div class="pill-row"><span class="pill">Postman</span><span class="pill">Swagger</span><span class="pill">Manual Testing</span></div>
       </div>
       <div class="skill-card">
         <div class="k">tools</div>
-        <div class="pill-row"><span class="pill">Git / GitHub</span><span class="pill">Postman</span><span class="pill">SSMS</span><span class="pill">Azure DevOps</span></div>
+        <div class="pill-row"><span class="pill">Visual Studio</span><span class="pill">Git / GitHub</span><span class="pill">SSMS</span><span class="pill">Azure DevOps</span></div>
       </div>
     </div>
     <div id="learning" class="learning-strip reveal">
@@ -335,27 +390,74 @@
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head reveal">
+      <div><div class="section-tag">// work</div><h2 class="h">Experience</h2></div>
+      <div class="section-note">hands-on industry internship</div>
+    </div>
+    <div class="timeline reveal">
+      <div class="t-item current">
+        <div class="t-when">Sep 2026</div>
+        <div class="t-title">Back-End Developer Intern (.NET MVC) <span class="tag">Pioneers Solutions</span></div>
+        <div class="t-place">Shebin El Kom, Monufia</div>
+        <ul class="t-list">
+          <li>Worked as a Back-End Developer on ASP.NET Core MVC in a live production environment, contributing to real-world application development.</li>
+          <li>Delivered an HR Management System (HRMS) from a written requirements specification to a deployed application — see the project below.</li>
+          <li>Applied MVC concepts, database integration, and back-end best practices under professional guidance, and worked through code-review feedback from my team lead.</li>
+        </ul>
+        <a class="t-link" href="#hrms">See the HRMS project ↓</a>
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-head reveal">
       <div><div class="section-tag">// build log</div><h2 class="h">Projects</h2></div>
-      <div class="section-note">3 of 3 shown</div>
+      <div class="section-note">4 of 4 shown · demo logins available on request</div>
+    </div>
+
+    <div class="project reveal" id="hrms">
+      <div class="project-top">
+        <div class="route"><span class="method">CORE</span>/hrms</div>
+        <span class="grade edge">internship project</span>
+      </div>
+      <h3>HRMS — Human Resources Management System</h3>
+      <div class="stack-row">
+        <span class="pill">ASP.NET Core MVC</span><span class="pill">Clean Architecture</span><span class="pill">EF Core</span><span class="pill">SQL Server</span><span class="pill">Specification Pattern</span><span class="pill">AutoMapper</span><span class="pill">ClosedXML</span>
+      </div>
+      <ul>
+        <li>Arabic (RTL) HR system built during my internship at Pioneers Solutions from a written requirements spec: login, user groups and permissions, employee records, general settings, official holidays, attendance tracking, and payroll reports.</li>
+        <li>Clean Architecture across Domain, Application, Infrastructure, and Web layers, using Generic Repository, Unit of Work, the Specification pattern for paged queries, and AutoMapper.</li>
+        <li>Page-level permissions (view / add / edit / delete per role) enforced by a custom authorization attribute, with employee national IDs encrypted at rest using AES.</li>
+        <li>Attendance import and export with Excel, plus payroll calculation for overtime, deductions, and absence days, with approved payroll records kept as frozen snapshots.</li>
+      </ul>
+      <div class="project-links">
+        <a class="live" href="https://hrmsapp.runasp.net/" target="_blank" rel="noopener">↗ Live demo</a>
+        <a href="https://github.com/Islam3mar/HRMS" target="_blank" rel="noopener">↗ github.com/Islam3mar/HRMS</a>
+      </div>
     </div>
 
     <div class="project reveal">
       <div class="project-top">
         <div class="route"><span class="method">CORE</span>/ecommerce-api</div>
+        <span class="grade">route academy</span>
       </div>
       <h3>E-Commerce RESTful API</h3>
       <div class="stack-row">
-        <span class="pill">ASP.NET Core</span><span class="pill">Onion Architecture</span><span class="pill">JWT</span><span class="pill">Redis</span><span class="pill">Stripe</span><span class="pill">Specification Pattern</span>
+        <span class="pill">ASP.NET Core</span><span class="pill">Onion Architecture</span><span class="pill">JWT</span><span class="pill">Redis</span><span class="pill">Stripe</span><span class="pill">Specification Pattern</span><span class="pill">FluentValidation</span><span class="pill">Swagger</span>
       </div>
       <ul>
-        <li>Flexible filtering, sorting, and pagination for products and orders, built with the Specification pattern</li>
-        <li>Redis caching layer that speeds up product data retrieval</li>
-        <li>JWT authentication and Stripe integration for secure checkout payments</li>
+        <li>Production-ready API with Onion Architecture, AutoMapper, Unit of Work, FluentValidation, SOLID principles, and Swagger documentation.</li>
+        <li>Flexible filtering, sorting, and pagination for products and orders, built with the Specification pattern.</li>
+        <li>Redis caching layer that speeds up product data retrieval.</li>
+        <li>JWT authentication and Stripe integration for secure checkout payments.</li>
       </ul>
-      <a class="repo-link" href="https://github.com/Islam3mar/ECommerceAPI.git" target="_blank" rel="noopener">↗ github.com/Islam3mar/ECommerceAPI</a>
+      <div class="project-links">
+        <a class="live" href="https://splendid-commitment-production-3ff6.up.railway.app/swagger" target="_blank" rel="noopener">↗ Live API (Swagger)</a>
+        <a href="https://github.com/Islam3mar/ECommerceAPI" target="_blank" rel="noopener">↗ github.com/Islam3mar/ECommerceAPI</a>
+      </div>
     </div>
 
     <div class="project reveal">
@@ -365,30 +467,37 @@
       </div>
       <h3>Kon Sanad — Charity Management System</h3>
       <div class="stack-row">
-        <span class="pill">ASP.NET Core Web API</span><span class="pill">Clean Architecture</span><span class="pill">SignalR</span><span class="pill">Redis</span><span class="pill">5 Roles</span>
+        <span class="pill">ASP.NET Core Web API</span><span class="pill">Clean Architecture</span><span class="pill">JWT</span><span class="pill">SignalR</span><span class="pill">Redis</span><span class="pill">5 Roles</span>
       </div>
       <ul>
-        <li>Role-based API covering five roles: Manager, Volunteer, Beneficiary, Donor, and Admin</li>
-        <li>Real-time notification system with SignalR and Redis, plus a background job that flags campaigns nearing their end date</li>
-        <li>PDF reporting module and a KPI dashboard for donations and beneficiaries</li>
+        <li>Role-based API covering five roles — Manager, Volunteer, Beneficiary, Donor, and Admin — with donation pipelines, warehouse management, and a KPI dashboard.</li>
+        <li>Real-time notification system with SignalR and Redis, plus a background job that flags campaigns nearing their end date and notifies managers, volunteers, and donors.</li>
+        <li>PDF reporting module for donors, donations, and beneficiaries, feeding a dashboard of key statistics.</li>
       </ul>
-      <a class="repo-link" href="https://github.com/ahmed-samir10/GraduationProject.git" target="_blank" rel="noopener">↗ github.com/ahmed-samir10/GraduationProject</a>
+      <div class="project-links">
+        <a class="live" href="https://kon-sanad-whbi.vercel.app/login" target="_blank" rel="noopener">↗ Live demo</a>
+        <a href="https://github.com/ahmed-samir10/GraduationProject" target="_blank" rel="noopener">↗ github.com/ahmed-samir10/GraduationProject</a>
+      </div>
     </div>
 
     <div class="project reveal">
       <div class="project-top">
         <div class="route"><span class="method">CORE</span>/gym-management</div>
+        <span class="grade">route academy</span>
       </div>
       <h3>Gym Management System</h3>
       <div class="stack-row">
-        <span class="pill">ASP.NET MVC</span><span class="pill">3-Tier Architecture</span><span class="pill">Identity</span><span class="pill">AutoMapper</span>
+        <span class="pill">ASP.NET MVC</span><span class="pill">3-Tier Architecture</span><span class="pill">Identity</span><span class="pill">AutoMapper</span><span class="pill">Generic Repository</span>
       </div>
       <ul>
-        <li>Session booking system where members book sessions and trainers mark attendance or cancel bookings</li>
-        <li>Role-based authentication (Admin / Trainer / Member) with ASP.NET Core Identity and AutoMapper</li>
-        <li>Resolved EF Core migration and seed-data issues across the service and view layers</li>
+        <li>Full-stack web app with role-based dashboards for admins, trainers, and members, covering session scheduling and subscription management.</li>
+        <li>Session booking system where members book sessions and trainers mark attendance or cancel bookings, backed by a service layer using the Repository and Unit of Work patterns.</li>
+        <li>Role-based authentication (Admin / Trainer / Member) with ASP.NET Core Identity and AutoMapper; resolved EF Core migration and seed-data issues along the way.</li>
       </ul>
-      <a class="repo-link" href="https://github.com/Islam3mar/GymSystemMVC.git" target="_blank" rel="noopener">↗ github.com/Islam3mar/GymSystemMVC</a>
+      <div class="project-links">
+        <a class="live" href="https://gym-system-0.runasp.net/" target="_blank" rel="noopener">↗ Live demo</a>
+        <a href="https://github.com/Islam3mar/GymSystemMVC" target="_blank" rel="noopener">↗ github.com/Islam3mar/GymSystemMVC</a>
+      </div>
     </div>
   </section>
 
@@ -405,7 +514,7 @@
       </div>
       <div class="t-item">
         <div class="t-when">Dec 2025 — Jul 2026</div>
-        <div class="t-title">Back-End Development Diploma <span class="tag">Route Academy</span></div>
+        <div class="t-title">Back-End Development Diploma — .NET Track <span class="tag">Route Academy</span></div>
         <div class="t-desc">120 hours covering C#, OOP, LINQ, SQL Server, EF Core, ASP.NET MVC and Web APIs, SOLID, design patterns, and Agile with Azure DevOps.</div>
       </div>
       <div class="t-item">
@@ -426,7 +535,7 @@
     <div class="contact-panel reveal">
       <div class="section-tag" style="justify-content:center;display:flex;margin-bottom:10px;">// get in touch</div>
       <h2>Let's build something reliable.</h2>
-      <p>Open to Junior Back-End Developer roles and internships in the .NET ecosystem. I reply fast and I'm based in Egypt, comfortable working remotely.</p>
+      <p>Open to Junior Back-End Developer roles in the .NET ecosystem. I reply fast, I'm based in Egypt, and I'm comfortable working remotely.</p>
       <div class="contact-links">
         <a href="mailto:islam3marahmed@gmail.com">✉ Email</a>
         <a href="tel:+201036272141">☎ +20 103 627 2141</a>
@@ -442,7 +551,7 @@
 
 </main>
 
-<footer>Islam Omar — Back-End Developer · Sadat City, Egypt</footer>
+<footer>Islam Omar — Back-End Developer · Cairo, Egypt</footer>
 
 <script>
 (function(){
