@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0B1220">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Islam Omar — Back-End Developer (.NET)">
-<meta property="og:description" content="ASP.NET Core APIs and MVC apps on Clean and Onion Architecture. Back-end intern at Pioneers Solutions. Four projects with live demos.">
+<meta property="og:description" content="ASP.NET Core APIs and MVC apps on Clean and Onion Architecture. Back-end intern at Pioneers Solutions. Five projects with live demos.">
 <meta property="og:url" content="https://islam3mar.github.io/portfolio/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1220'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%237DD3C0' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23F0A860'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -334,7 +334,7 @@
         <div class="stat"><div class="num">84%</div><div class="lbl">university gpa</div></div>
         <div class="stat"><div class="num">120h</div><div class="lbl">back-end diploma</div></div>
         <div class="stat"><div class="num">A+</div><div class="lbl">graduation project</div></div>
-        <div class="stat"><div class="num">04</div><div class="lbl">projects with live demos</div></div>
+        <div class="stat"><div class="num">05</div><div class="lbl">projects with live demos</div></div>
       </div>
     </div>
   </section>
@@ -360,7 +360,7 @@
       </div>
       <div class="skill-card">
         <div class="k">auth &amp; security</div>
-        <div class="pill-row"><span class="pill">JWT</span><span class="pill">ASP.NET Identity</span><span class="pill">Role-based Auth</span><span class="pill">Permission-based Auth</span></div>
+        <div class="pill-row"><span class="pill">JWT</span><span class="pill">ASP.NET Identity</span><span class="pill">BCrypt</span><span class="pill">Rate Limiting</span><span class="pill">Role-based Auth</span><span class="pill">Permission-based Auth</span></div>
       </div>
       <div class="skill-card">
         <div class="k">data</div>
@@ -368,7 +368,7 @@
       </div>
       <div class="skill-card">
         <div class="k">infra &amp; integrations</div>
-        <div class="pill-row"><span class="pill">SignalR</span><span class="pill">Stripe</span><span class="pill">Background Jobs</span><span class="pill">Excel Import / Export</span></div>
+        <div class="pill-row"><span class="pill">SignalR</span><span class="pill">Stripe</span><span class="pill">Webhooks</span><span class="pill">MailKit (SMTP)</span><span class="pill">QuestPDF</span><span class="pill">Background Jobs</span><span class="pill">Excel Import / Export</span></div>
       </div>
       <div class="skill-card">
         <div class="k">front end</div>
@@ -404,9 +404,10 @@
         <ul class="t-list">
           <li>Worked as a Back-End Developer on ASP.NET Core MVC in a live production environment, contributing to real-world application development.</li>
           <li>Delivered an HR Management System (HRMS) from a written requirements specification to a deployed application — see the project below.</li>
+          <li>Built a Bills System (October 2026) with Stripe Checkout, PDF invoices, and automated email reminders — see the project below.</li>
           <li>Applied MVC concepts, database integration, and back-end best practices under professional guidance, and worked through code-review feedback from my team lead.</li>
         </ul>
-        <a class="t-link" href="#hrms">See the HRMS project ↓</a>
+        <a class="t-link" href="#bills">See the Bills project ↓</a> &nbsp;·&nbsp; <a class="t-link" href="#hrms">See the HRMS project ↓</a>
       </div>
     </div>
   </section>
@@ -415,7 +416,28 @@
   <section id="projects">
     <div class="section-head reveal">
       <div><div class="section-tag">// build log</div><h2 class="h">Projects</h2></div>
-      <div class="section-note">4 of 4 shown · demo logins available on request</div>
+      <div class="section-note">5 of 5 shown · demo logins available on request</div>
+    </div>
+
+    <div class="project reveal" id="bills">
+      <div class="project-top">
+        <div class="route"><span class="method">CORE</span>/bills</div>
+        <span class="grade edge">internship project</span>
+      </div>
+      <h3>Bills System — Billing &amp; Invoicing</h3>
+      <div class="stack-row">
+        <span class="pill">ASP.NET Core MVC</span><span class="pill">Clean Architecture</span><span class="pill">EF Core</span><span class="pill">SQL Server</span><span class="pill">Stripe Checkout</span><span class="pill">QuestPDF</span><span class="pill">MailKit</span><span class="pill">FluentValidation</span>
+      </div>
+      <ul>
+        <li>Billing system built during my internship at Pioneers Solutions: clients, companies, items with categories and units, bills with discounts, credit limits, cash and online payments, a sales report, and in-app notifications.</li>
+        <li>Clean Architecture across Domain, Application, Infrastructure, and Web layers, using Generic Repository, Unit of Work, the Specification pattern for paged queries, and FluentValidation.</li>
+        <li>Stripe Checkout with secure webhooks: signature verification, idempotent event processing, and refund and dispute handling that keeps bill balances in sync.</li>
+        <li>Arabic / English PDF invoices generated with QuestPDF, and a MailKit BackgroundService that sends due-date and overdue reminders, with catch-up logic so reminders missed during downtime still go out.</li>
+      </ul>
+      <div class="project-links">
+        <a class="live" href="https://bills.runasp.net/" target="_blank" rel="noopener">↗ Live demo</a>
+        <a href="https://github.com/Islam3mar/BillsSystem" target="_blank" rel="noopener">↗ github.com/Islam3mar/BillsSystem</a>
+      </div>
     </div>
 
     <div class="project reveal" id="hrms">
